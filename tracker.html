@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        h1{
+            text-align: center;
+            color:rgb(61,91,160);
+            text-decoration:underline;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight:900;
+        }
+        #main{
+            margin:auto;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            
+        }
+        #main > div{
+            display: flex;
+            flex-direction:column;
+            margin: 5px 15px;
+        }
+        #but{
+            color: white;
+            background-color: rgb(54,93,153);
+            text-align: center;
+            font-family: arial;
+            padding:5px 0px;
+            border-radius: 12px;
+            margin-top: 1px;
+        }
+        input{
+            height: 20px;
+            border-radius: 5px;
+        }
+        select{
+            height: 25px;
+            border-radius: 5px;
+
+        }
+        label{
+            margin-bottom: 5px;
+            font-weight:300;
+        }
+
+
+        #submain{
+            padding:5% 10%;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: 20% 20% 20% 20% ;
+            grid-template-rows:auto auto auto auto ;
+            justify-content: center;
+        }
+        #box{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            padding:10%;
+        }
+        #savings,h3{
+            color: rgb(44, 114, 61);
+        }
+        #income{
+            color: rgb(99, 104, 98);
+        }
+        #expense{
+            color: rgb(206, 117, 129);
+        }
+    </style>
+</head>
+<body>
+    <h1>EXPENSE TRACKER</h1>
+    <div id="main">
+        <div>
+            <lable>Select Month</lable>
+            <select id="month">
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>may</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Income</label>
+            <input id="income" type="number" placeholder="Enter Income in Rs" />
+        </div>
+        
+        <div>
+            <label>Expense</label>
+            <input  id= "expense" type="number" placeholder="Enter expense in Rs" />
+
+        </div>
+        <div onclick="createnew()">
+            <p id ="but">Submit</p>
+        </div>
+      
+    </div>
+
+    <div id="submain"></div>
+    
+</body>
+</html>
+
+<script>
+    var submain = document.getElementById("submain");
+    var income= document.getElementById("income")
+    var expense= document.getElementById("expense");
+    var month= document.getElementById("month");
+
+
+    function createnew(){
+        var box = document.createElement("div")
+        box.setAttribute("id","box")
+        submain.append(box)
+        var heading = document.createElement("h3")
+        var heading1 = document.createElement("p")
+        var heading2 = document.createElement("p")
+        var heading3 = document.createElement("p")
+        heading.textContent=month.value;
+        heading1.textContent="Your income is Rs." + income.value+"/-";
+        heading2.textContent="Your expense is Rs."+expense.value+"/-";
+        heading3.textContent="Your savings are Rs." + (income.value-expense.value)  +"/-";
+        heading1.setAttribute("id","income");
+        heading2.setAttribute("id","expense");
+        heading3.setAttribute("id","savings")
+
+        box.append(heading,heading1, heading2, heading3)
+    }
+
+
+</script>
